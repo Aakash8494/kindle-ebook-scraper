@@ -10,6 +10,7 @@
 // @match        https://read.amazon.com/*?asin=*
 // @match        https://lire.amazon.fr/*?asin=*
 // @match        https://leer.amazon.es/*?asin=*
+// @match        https://read.amazon.in/*?asin=*
 // @grant        GM_registerMenuCommand
 // @grant        GM_notification
 // @require      https://cdnjs.cloudflare.com/ajax/libs/jspdf/2.5.1/jspdf.umd.min.js
@@ -95,7 +96,7 @@
       return navigate({ getBtn: backwardButton, wheelDelta: -1 })
     }
 
-    const pdf = new jspdf.jsPDF() // Default A4 page size (210x297mm)
+    const pdf = new jspdf.jsPDF({ orientation: "landscape" }) // Landscape page orientation
 
     // navigate to the first page
     while (backwardButton()) {
